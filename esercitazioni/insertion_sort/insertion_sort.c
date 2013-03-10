@@ -1,8 +1,12 @@
+/*
+	Enrico Salvucci
 
+	Programma per l'ordinamento di un vettore di interi tramite l'algoritmo Insertion Sort
+
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 
 #define fflush(stdin) while (getchar() != '\n')
