@@ -12,7 +12,7 @@
 #define fflush(stdin) while (getchar() != '\n')
 
 // Prototipi delle funzioni
-int ordinamento(int vettore[], int totale);
+int insertion_sort(int vettore[], int totale);
 
 // main()
 int main()
@@ -34,25 +34,13 @@ int main()
 		// inserimento dei valori all'interno del vettore
 		for ( i = 0; i < totale; i++)
 			{
-				
-		/*		printf("Si inserisca il %d° vettore\n", i);
-				if ( scanf("%d", &vettore[i]) == 0 )
-					{
-						printf("Input errato!\n");
-						return -1;
-					}
-				fflush(stdin);
-			//	printf("vettore[%d] == %d", i,vettore[i]);			
-	*/
-
 				vettore[i] = rand() % totale;			
-	
 			}
 	
 		// inizio timer
 		start = clock();
 
-		ordinamento( vettore, totale);	
+		insertion_sort( vettore, totale);	
 
 		//fine timer
 		end = clock();
@@ -72,7 +60,7 @@ int main()
 	}
 
 
-int ordinamento(int  vettore[], int totale)
+int insertion_sort(int  vettore[], int totale)
 	{
 
 		int j, k, key;
