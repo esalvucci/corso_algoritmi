@@ -13,3 +13,14 @@
 #	Exclude Compiled Source		#
 
 *.o
+
+#  Exclude pdf or other text document	#
+
+*.pdf
+*.ods
+*.odt
+
+#	Exclude tmp file		#
+
+*.swp
+
