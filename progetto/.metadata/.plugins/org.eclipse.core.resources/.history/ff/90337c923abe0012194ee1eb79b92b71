@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include "stack.h"
+
+void main()
+	{
+		int valore = 5
+
+				while ( valore <= 5 )
+					{
+						push(valore);
+						valore--;
+					}
+
+
+	}

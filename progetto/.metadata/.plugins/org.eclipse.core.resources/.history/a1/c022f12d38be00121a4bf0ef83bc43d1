@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "stack.h"
+
+void main()
+	{
+
+		int valore = 0;
+
+		while (valore != 5 )
+			{
+				push( valore );
+				valore++;
+			}
+
+		printf("%d", pop(4));
+
+	}

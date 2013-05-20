@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include "stack.h"
+
+void main()
+	{
+
+		int valore = 54;
+
+		while (valore != 0 )
+			{
+				push( valore );
+				valore--;
+			}
+
+		valore = 54;
+
+		while (valore != 0 )
+				{
+					pop(valore);
+					printf("valore\t");
+					valore--;
+				}
+
+
+
+
+
+	}
