@@ -17,27 +17,6 @@ struct nodo *aggiungi_nodo(struct nodo *,char *);
 /*		Dichiarazione delle funzioni	*/
 void stampa_albero(struct nodo *);
 
-/*		Funzione main	*/
-int main()
-	{
-
-		struct nodo *root = NULL;
-		char word[MAXWORD];
-		
-		// Prendo in input la funzione, a noi questo non servirà perchè la prenderemo da un file di testo
-		printf("Scrivere... boh, tu scrivi qualcosa!");
-		while( fgets( word, MAXWORD, stdin ) != NULL )
-			{
-				printf("Scrivere... boh, tu scrivi qualcosa!");
-				root = aggiungi_nodo(root,word);
-				// premere CTRL-Z per terminare l'inserimento e CTRL-D su Linux / Mac
-			}
-		printf("\n------------------------------------------\n");
-		stampa_albero(root);
-		return 0;
-	}
-
-
 struct nodo *aggiungi_nodo(struct nodo *p,char *w)
 	{
 		// Controllo se l'albero è vuoto, o se il nodo in cui mi trovo è vuoto (perchè potrei per esempio spostarmi a sinistra e trovare un nodo == NULL)
@@ -56,6 +35,10 @@ struct nodo *aggiungi_nodo(struct nodo *p,char *w)
 		else p->right = aggiungi_nodo(p->right,w);	// Se il nodo contiene una variabile, oppure una costante, allora lo inserisco a destra
 
 		return p;
+		
+
+		// Manca la free();
+
 	}
 
 
@@ -72,3 +55,20 @@ void stampa_albero(struct nodo *p)
 			}
 
 	}
+
+/*
+struct nodo *duplica(struct *p)
+	{
+		
+		if (!p) return NULL;
+
+		struct nodo *root_2 = NULL;
+		
+		root_2 = aggiungi_nodo(root_2, p->word);
+		
+		root_2->word = p->word;
+		root_2->left = duplica(p->left);
+		root_2->right = duplica(p->right);
+		return root_2;
+	}
+*/
