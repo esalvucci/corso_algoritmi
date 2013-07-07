@@ -3,14 +3,8 @@
 #########################
 
 
-#	Exclude lucidi_laboratorio      #
-#	Exclude lucidi_lezione		#
-
-
-./lucidi_laboratorio/
-./lucidi_lezione
-.metadata/
-progetto/.metadata/
+#	Exclude directory "dispense"      #
+./dispense
 
 #	Exclude Compiled Source		#
 
