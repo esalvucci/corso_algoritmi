@@ -1,0 +1,26 @@
+insertion sort: o( N2 )
+
+USAGE:
+da prompt di comandi < insertionsort N > (N = numero di elementi da ordinare)
+
+merge sort: o( N*log(N) )
+
+USAGE:
+da prompt di comandi < mergesort N > (N = numero di elementi da ordinare)
+
+heap:
+
+USAGE:
+compilare ed eseguire. vi si presenterà un menù a scelta. P.S. il vettore ha un massimo di 1000 elementi
+
+quick sort: o( N*log(N) )
+
+USAGE:
+da prompt di comandi < quicksort N > (N = numero di elementi da ordinare)
+con N < 13 viene stampato il vettore a video.ù
+
+counting sort: o( N )
+
+USAGE:
+da prompt di comandi < countingsort N R > (N = numero di elementi da ordinare, R = range dei numeri con cui viene riempito il vettore)
+con N < 13 viene stampato il vettore a video.
