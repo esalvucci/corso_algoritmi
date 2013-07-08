@@ -27,12 +27,13 @@ struct nodo *aggiungi_nodo(struct nodo *p,char *w)
 				p->word = strdup(w);		// strdup(); copia e restituisce la stringa data come parametro, questa viene messa in p->word
 				p->left = p->right = NULL;
 			}
-	 	// Attenzione! Manca il contrllo sulla malloc (che però mi da problemi)	
-		else if ( !strcmp(w,"plus") )
+	 	// Attenzione! Manca il contrllo sulla malloc Fixed!	
+		else 
+			if ( w == "meno" )
+				printf("nfjsff");
+				p->left = aggiungi_nodo(p->left,"sinistra");	// Se il nodo contiene un operatore (in questa prova "plus") allora lo inserisco a sinistra
 
-			p->left = aggiungi_nodo(p->left,w);	// Se il nodo contiene un operatore (in questa prova "plus") allora lo inserisco a sinistra
-
-		else p->right = aggiungi_nodo(p->right,w);	// Se il nodo contiene una variabile, oppure una costante, allora lo inserisco a destra
+		// else p->right = aggiungi_nodo(p->right,w);	// Se il nodo contiene una variabile, oppure una costante, allora lo inserisco a destra
 
 		return p;
 		
