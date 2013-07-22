@@ -5,7 +5,7 @@
 
 int main()
 {
-	char str[]="plus(x,8)";     //stringa in imput
+	char str[]="plus(8,pow(x,2))";     //stringa in imput
 	int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1;
 	char parte_tok[50]="", funzione_1[50]="", funzione_2[50]="",primo_operando[5]="";					// stringa in output	
 	
