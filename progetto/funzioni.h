@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+
 // Dichiarazione delle funzioni
 char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]);
 
@@ -29,7 +31,8 @@ char *D_Principali(char *primo_operando)
 char *Pow(char *funzione_1,char *funzione_2)
 {
 	printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
-
+													// Bisognerebbe controllare che il primo parametro sia una x e il secondo no
+													// contrariamente si potrebbe avere "2^x" la cui derivata (credo) 0 poichè è una costante
 	sprintf(potenza, "Mul(%s,(Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 	// strcat(output,stringa_temp);		// serve per sommare le stringhe
 	return potenza;					
@@ -49,7 +52,12 @@ char *Sum(char *funzione_1,char *funzione_2)
 	printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
 	
 	// verifico se ci sono funzioni composte
-	if ( funzione_1[0] == 'p') 	
+
+	// Qui andrebbe messo uno split per controllare le sottofunzioni
+	// e poi si richiama la funzione Ricerca_e_deriva per calcolare le derivate delle due funzioni
+
+
+/*	if ( funzione_1[0] == 'p') 	
 		strcpy(funzione_1, Pow(funzione_1, funzione_2));	
 	
 	if ( funzione_2[0] == 'p') 	
@@ -59,6 +67,7 @@ char *Sum(char *funzione_1,char *funzione_2)
 	sprintf(somma, "Plus(%s,%s) ", funzione_1, funzione_2);		
 	// strcat(output,stringa_temp);		// serve per sommare le stringhe
 	return somma;					
+*/
 }
 
 
@@ -98,6 +107,8 @@ char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]
 {
 
 	char *output;
+
+	printf("primo_operando = %s", primo_operando);
 	
 	if ( strcmp(primo_operando,"x") == 0 || ( strcmp(primo_operando,"plus") != 0 && strcmp(primo_operando,"mul") != 0 && strcmp(primo_operando,"sot") != 0 && strcmp(primo_operando,"pow") != 0 ))
 		output = D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
