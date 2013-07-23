@@ -5,10 +5,12 @@
 
 int main()
 {
-	char str[]="plus(8,pow(x,2))";     //stringa in imput
+	char str[]= "4";     //stringa in imput
 	int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1;
 	char parte_tok[50]="", funzione_1[50]="", funzione_2[50]="",primo_operando[5]="";					// stringa in output	
-	
+	char *output = NULL;
+
+
 	max=strlen(str);
 	printf("%s\n", str);	// stampa vett originale
 	while(x <= max )							//ciclo per scorrere il vett
@@ -55,9 +57,9 @@ int main()
 
 	printf("funzione_1 = %s\n", funzione_1);
 	printf("funzione_2 = %s\n\n", funzione_2);
-	printf("primo_operando = %s\n\n", primo_operando);
+	printf("primo_operando = p%s\n\n", primo_operando);
 
-	char *output = Ricerca_e_deriva(funzione_1,funzione_2,primo_operando);
+	output = Ricerca_e_deriva(funzione_1,funzione_2,primo_operando);
 
 	printf("output = %s\n\n", output);
 

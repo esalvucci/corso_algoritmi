@@ -5,15 +5,25 @@
 // Dichiarazione delle funzioni
 char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]);
 
-
 char output[100];
-
-
 
 char potenza[100];
 char somma[100];
 
 /*			Inizio funzioni di derivazione		*/
+
+/*	Derivate fondamentali	*/
+char *D_Principali(char *primo_operando)
+{
+	if ( strcmp( primo_operando, "x" ) != 0 )
+		{
+			return "0";
+	
+		}
+	else	
+		return "1";
+	
+}
 
 /*	Funzione Potenza	*/
 char *Pow(char *funzione_1,char *funzione_2)
@@ -60,20 +70,21 @@ char *Sum(char *funzione_1,char *funzione_2)
 *							*
 *     D(f(x) * g(x)) = f'(x) * g(x) + f(x) * g'(x)	*
 *-------------------------------------------------------*/
-/*char *Mul(char *funzione_1, char *funzione_2)
+char *Mul(char *funzione_1, char *funzione_2)
 	{
 	//	char *d_funzione_2;	// d_funzione_* corrisponde alla derivata di quella funzione
 		printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
 		
 
 		// Prima faccio lo split
-		char *d_funzione_1 = Ricerca_e_deriva(funzione_1, funzione_2, );
+		//char *d_funzione_1 = Ricerca_e_deriva(funzione_1, funzione_2, primo_operando);
 
 		
 		
 	
 	}
-*/
+
+
 /*------------------------------------------------------*
 *		Funzione Ricerca_e_deriva		*
 *							*
@@ -87,6 +98,9 @@ char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]
 {
 
 	char *output;
+	
+	if ( strcmp(primo_operando,"x") == 0 || ( strcmp(primo_operando,"plus") != 0 && strcmp(primo_operando,"mul") != 0 && strcmp(primo_operando,"sot") != 0 && strcmp(primo_operando,"pow") != 0 ))
+		output = D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
 	
 	if(strcmp(primo_operando,"pow")==0)
 	{
