@@ -2,15 +2,17 @@
 #include <string.h>
 #include <stdlib.h>
 
+void split(char *str);
 
 
-// Dichiarazione delle funzioni
-char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]);
 
 char output[100];
 
-char potenza[100];
-char somma[100];
+// dichiarazione delle variabili per la funzione split()
+char funzione_1[50] = "", funzione_2[50] = "", primo_operando[50] = "";
+
+
+
 
 /*			Inizio funzioni di derivazione		*/
 
@@ -30,11 +32,15 @@ char *D_Principali(char *primo_operando)
 /*	Funzione Potenza	*/
 char *Pow(char *funzione_1,char *funzione_2)
 {
+	// segmentation fault con char *potenza;	
+	char potenza[50] = "";
+	
 	printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
 													// Bisognerebbe controllare che il primo parametro sia una x e il secondo no
 													// contrariamente si potrebbe avere "2^x" la cui derivata (credo) 0 poichè è una costante
 	sprintf(potenza, "Mul(%s,(Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 	// strcat(output,stringa_temp);		// serve per sommare le stringhe
+	
 	return potenza;					
 }
 
@@ -49,25 +55,22 @@ char *Pow(char *funzione_1,char *funzione_2)
 
 char *Sum(char *funzione_1,char *funzione_2)
 {
+
+	char *somma = NULL;
+
 	printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
 	
 	// verifico se ci sono funzioni composte
-
+	
 	// Qui andrebbe messo uno split per controllare le sottofunzioni
 	// e poi si richiama la funzione Ricerca_e_deriva per calcolare le derivate delle due funzioni
+	split(funzione_1);
+	split(funzione_2);
 
-
-/*	if ( funzione_1[0] == 'p') 	
-		strcpy(funzione_1, Pow(funzione_1, funzione_2));	
-	
-	if ( funzione_2[0] == 'p') 	
-		strcpy(funzione_2, Pow(funzione_2, funzione_1));	
-	
-	
 	sprintf(somma, "Plus(%s,%s) ", funzione_1, funzione_2);		
 	// strcat(output,stringa_temp);		// serve per sommare le stringhe
 	return somma;					
-*/
+
 }
 
 
@@ -103,10 +106,10 @@ char *Mul(char *funzione_1, char *funzione_2)
 *							*
 *-------------------------------------------------------*/
 
-char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[])
+char *Ricerca_e_deriva()
 {
 
-	char *output;
+	char *output = NULL;
 
 	printf("primo_operando = %s", primo_operando);
 	
@@ -138,3 +141,57 @@ char *Ricerca_e_deriva(char funzione_1[],char funzione_2[],char primo_operando[]
 	return output;	
 
 }
+
+
+
+void split(char *str)
+	{
+		int x = 0,y = 0,yy=0, pt = 0, flag_primo=1, contatore_aperta = 1;
+		int max = strlen(str);
+		char parte_tok[50] = ""; 
+		
+		while(x <= max )							//ciclo per scorrere il vett
+			{
+				if(flag_primo==1)
+					{
+						primo_operando[x]=str[x];
+						if(str[x+1]=='(' )
+							flag_primo=0;
+					}
+
+				if(str[x-1]=='(')					// inizia a copiare 
+					{
+						while(contatore_aperta>0)		// copia fino a quando 
+							{
+								if(str[x]=='(')
+									contatore_aperta++;
+								if(str[x]==',')
+									contatore_aperta--;
+								parte_tok[y]=str[x];	//copia cella per cella nel vett di out
+								x++,y++;
+							}
+						strcpy(funzione_1,parte_tok);
+						for(pt=0;pt<50;pt++)
+							{
+								parte_tok[pt]=0;
+							}
+					}
+				else if(contatore_aperta==0)
+					{
+						while(x <= max-1 )
+							{
+								parte_tok[yy]=str[x-1];
+								yy++,x++;
+							}
+						strcpy(funzione_2,parte_tok);
+						for( pt=0; pt<50;pt++)
+							{
+								parte_tok[pt]=0;
+							}
+					}
+				x++;
+			}
+
+
+	}
+
