@@ -2,12 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 char *split(char *str);
+int der_1=0,der_2=0;
+#define MAX 500
 
-
-
-char output[100];
+char output[MAX];
 
 // dichiarazione delle variabili per la funzione split()
+char funzione_1[50] = "", funzione_2[50] = "", primo_operando[50] = "";
 
 
 
@@ -17,20 +18,13 @@ char output[100];
 /*	Derivate fondamentali	*/
 char *D_Principali(char *primo_operando)
 {
-	if ( strcmp( primo_operando, "x" ) != 0 )
-		{
-			return "0";
-	
-		}
+	if ( strcmp( primo_operando, "x" ) != 0 ) { 	return "0";	}
 	else	
-		return "1";
-	
+	return "1";
 }
 
-/*	Funzione Potenza	*/
 char *Pow(char *funzione_1,char *funzione_2)
-{
-	// segmentation fault con char *potenza;	
+{	
 	char potenza[50] = "";
 	
 	//printf("funzione_1 = %s\nfunzione_2 = %s\n", funzione_1, funzione_2);
@@ -39,7 +33,7 @@ char *Pow(char *funzione_1,char *funzione_2)
 	sprintf(potenza, "Mul(%s,(Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 	// strcat(output,stringa_temp);		// serve per sommare le stringhe
 	
-	return potenza;					
+	return potenza;				
 }
 
 /*------------------------------------------------------*
@@ -53,18 +47,27 @@ char *Pow(char *funzione_1,char *funzione_2)
 
 char *Sum(char *funzione_1,char *funzione_2,char *primo_operando)
 {
-
-	char somma[50] = "";
-	char *derivata_1;	
+	char somma[MAX] = "";
 	// verifico se ci sono funzioni composte
 	
 	// Qui andrebbe messo uno split per controllare le sottofunzioni
 	// e poi si richiama la funzione Ricerca_e_deriva per calcolare le derivate delle due funzioni
-	derivata_1 = split(funzione_1);
+	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
+	{
+		der_1=1;
+		funzione_1=split(funzione_1);
+	}
+	else
+		funzione_1=D_Principali(funzione_1);
+	if(funzione_2[0]=='m' || funzione_2[0]=='s' || funzione_2[0]=='p')
+	{	der_2=1;
+		funzione_2=split(funzione_2);
+	}
+	else 
+		funzione_2=D_Principali(funzione_2);
 
-	sprintf(somma, "Plus(%s,%s) ", derivata_1, funzione_2);		
-	// strcat(output,stringa_temp);		// serve per sommare le stringhe
-	return somma;					
+	sprintf(somma, "Plus(%s,%s) ",funzione_1, funzione_2);		
+	return somma;				
 
 }
 
@@ -85,10 +88,48 @@ char *Mul(char *funzione_1, char *funzione_2)
 
 		// Prima faccio lo split
 		//char *d_funzione_1 = Ricerca_e_deriva(funzione_1, funzione_2, primo_operando);
+	}
 
-		
-		
+/*------------------------------------------------------*
+*		    Funizione Seno			*
+* 							*
+*	        questa funzione calcola			*
+*   	        la derivata del seno			*
+*							*
+*     	     D(sin(f(x)) = f(x) * f'(x)
+*-------------------------------------------------------*/
+char *Sin(char *funzione_1, char *derivata_1)
+	{
+
+		char seno[MAX] = "";
+		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
+		{
+			der_1=1;
+			derivata_1 = split(funzione_1);
+		}
+		else
+			derivata_1 = D_Principali(funzione_1);
+
+		sprintf(seno, "Mul(Cos(%s),%s)",funzione_1, derivata_1);		
 	
+		return seno;
+	}
+
+char *Cos(char *funzione_1, char *derivata_1)
+	{
+
+		char coseno[MAX] = "";
+		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
+		{
+			der_1=1;
+			derivata_1 = split(funzione_1);
+		}
+		else
+			derivata_1 = D_Principali(funzione_1);
+
+		sprintf(coseno, "Mul(-Sin(%s),%s)",funzione_1, derivata_1);		
+	
+		return coseno;
 	}
 
 
@@ -103,36 +144,36 @@ char *Mul(char *funzione_1, char *funzione_2)
 
 char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *primo_operando)
 {
-
-	char *output = NULL;
-
-//	printf("primo_operando = %s\n", primo_operando);
-	
+	char *potenza=NULL,*output=NULL;
 	if ( strcmp(primo_operando,"x") == 0 || ( strcmp(primo_operando,"plus") != 0 && strcmp(primo_operando,"mul") != 0 && strcmp(primo_operando,"sot") != 0 && strcmp(primo_operando,"pow") != 0 ))
-		output = D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
+	D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
 
 	if(strcmp(primo_operando,"pow")==0)
 	{
-		output = Pow(funzione_1,funzione_2);
+		output=Pow(funzione_1,funzione_2);
+		
 	}
 	else if(strcmp(primo_operando,"mul")== 0)	 //------------------------------------------- Mul
 	{
-		//Mul();
 	}
 	else if(strcmp(primo_operando,"plus") == 0)	//------------------------------------------- Add
 	{ 
-		//Add();
-		output = Sum(funzione_1,funzione_2,primo_operando);
+		output=Sum(funzione_1,funzione_2,primo_operando);
+		
 	}
 	else if(strcmp(primo_operando,"sot") == 0)	//------------------------------------------- Sot
 	{ 
 		//Sot();
 	}
-/*	if(strcmp(primo_operando,"div")== 0)	//------------------------------------------- Div
+	else if(strcmp(primo_operando,"sin") == 0)	//------------------------------------------- Sot
 	{ 
-		//Div();
-	}*/
-
+		output = Sin(funzione_1, "");
+	}
+	else if(strcmp(primo_operando,"cos") == 0)	//------------------------------------------- Sot
+	{ 
+		output = Cos(funzione_1, "");
+	}
+	
 	return output;	
 
 }
@@ -141,8 +182,9 @@ char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *primo_operando)
 
 char *split(char *str)
 {
-	int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1;
+	int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1, contatore_chiusa = 0;
 	char parte_tok[50]="", funzione_1[50]="", funzione_2[50]="",primo_operando[5]="";					// stringa in output	
+	char *fine = NULL;
 
 
 	max=strlen(str);
@@ -151,7 +193,7 @@ char *split(char *str)
 	{
 		if(flag_primo==1)
 		{
-		primo_operando[x]=str[x];
+			primo_operando[x]=str[x];
 			if(str[x+1]=='(' )
 			flag_primo=0;
 		}
@@ -161,45 +203,36 @@ char *split(char *str)
 			printf("primo_operando = %s\n", primo_operando);
 			while(contatore_aperta>0)		// copia fino a quando 
 			{
-				if(str[x]=='(')
-				contatore_aperta++;
-				if(str[x+1]==',')
-				contatore_aperta--;
-				parte_tok[y]=str[x-1];	//copia cella per cella nel vett di out
+				if(str[x]=='(')	contatore_aperta++;
+				if(str[x+1]==')')
+						contatore_aperta--;			
+				if(str[x+1]==',')	contatore_aperta--;
+
+				parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 				x++,y++;
 			}
 			strcpy(funzione_1,parte_tok);
-			for(pt=0;pt<50;pt++)
-			{
-				parte_tok[pt]=0;
-			}
 			x++;
-			//printf("livello %d\n",liv++);
-			//printf("derivata= %s\n", Ricerca_e_deriva(funzione_1, funzione_2, primo_operando));
-			if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
-			{split(funzione_1);}
+			for(pt=0;pt<50;pt++) {	parte_tok[pt]=0;}
+			
 		}
 		else if(contatore_aperta==0)
 		{
 			while(x <= max-1 )
-			{
-				parte_tok[yy]=str[x-1];
+			{	parte_tok[yy]=str[x-1];
 				yy++,x++;
 			}
+			
+			
 			strcpy(funzione_2,parte_tok);
-			for( pt=0; pt<50;pt++)
-			{
-				parte_tok[pt]=0;
-			}
-			//printf("livello %d\n",liv++);
-			printf("derivata= %s\n", Ricerca_e_deriva(funzione_1, funzione_2, primo_operando));
-			if(funzione_2[0]=='m' || funzione_2[0]=='s' || funzione_2[0]=='p')
-			{split(funzione_2);}
+			for( pt=0; pt<50;pt++) { parte_tok[pt]=0;	}
+			
 		}
 		x++;
 	}
-	
-	return Ricerca_e_deriva(funzione_1, funzione_2, primo_operando);
-
+	printf("funzione_1 %s\n",funzione_1);
+	printf("funzione_2 %s\n",funzione_2);
+	printf("primo_operando = %s\n", primo_operando);
+	return Ricerca_e_deriva(funzione_1,funzione_2,primo_operando);
 }
 
