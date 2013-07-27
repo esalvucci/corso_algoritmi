@@ -14,14 +14,14 @@ char *D_Principali(char *primo_operando)
 }
 char *Pow(char *funzione_1,char *funzione_2, char *potenza)
 {	
-	potenza = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
+	potenza = (char *)malloc(sizeof(char)*(7+strlen(funzione_1)+strlen(funzione_2)));
 	sprintf(potenza, "Mul(%s,(Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 	return potenza;				
 }
 char *Sum(char *funzione_1,char *funzione_2, char *somma)
 {
 
-	somma = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
+	somma = (char *)malloc(sizeof(char)*(7+strlen(funzione_1)+strlen(funzione_2)));
 	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p' || funzione_1[0] == 'c')
 			funzione_1=split(funzione_1);
 	else
@@ -42,7 +42,7 @@ char *Sum(char *funzione_1,char *funzione_2, char *somma)
 }
 char *Sot(char *funzione_1,char *funzione_2, char *sottrazione)
 {
-	sottrazione = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
+	sottrazione = (char *)malloc(sizeof(char)*(7+strlen(funzione_1)+strlen(funzione_2)));
 	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p' || funzione_1[0] == 'c')
 		{	funzione_1=split(funzione_1);	}
 	else
@@ -84,7 +84,7 @@ char *Mul(char *funzione_1, char *funzione_2, char *prodotto)
 char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 	{
 
-		coseno = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)));
+		coseno = (char *)malloc(sizeof(char)*(7+strlen(funzione_1)));
 		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 			{	derivata_1 = split(funzione_1);	}
 		else
@@ -97,7 +97,7 @@ char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 char *Sin(char *funzione_1, char *derivata_1, char *seno)
 	{
 
-		seno = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)));
+		seno = (char *)malloc(sizeof(char)*(7+strlen(funzione_1)));
 		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 			{	derivata_1 = split(funzione_1);	}
 		else
@@ -118,7 +118,7 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 
 char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *primo_operando, char *output)
 {
-	output = (char *)malloc(sizeof(char)*200);
+	output = (char *)malloc(sizeof(char)*10000);
 	if ( strcmp(primo_operando,"x") == 0 || ( strcmp(primo_operando,"plus") != 0 && strcmp(primo_operando,"mul") != 0 && strcmp(primo_operando,"sot") != 0 && strcmp(primo_operando,"pow") != 0 ))
 	D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
 
@@ -169,8 +169,7 @@ char *split(char *str)
 			{	
 				if(str[x]=='(')	contatore_aperta++;
 				if(str[x+1]==',')	contatore_aperta--;
-				if(str[x+1]==')')
-					contatore_aperta = contatore_aperta - 2;;
+				if(str[x-1]=='(' && str[x+1]==')')	contatore_aperta--;
 				parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 				x++,y++;
 			}
