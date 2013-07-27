@@ -9,8 +9,8 @@ int main()
 	char *ris=NULL;
 	
 	//char str[]= "plus(plus(plus(plus(plus(5,6),x),x),5),x)";     //stringa in imput
-	//char str[]= {"plus(plus(plus(plus(plus(plus(mul(pow(x,6),10),mul(pow(x,5),4)),mul(pow(x,4),21)),mul(pow(x,3),18)),mul(pow(x,2),7)),mul(x,2)),sin(x))"};     //stringa in imput
-char str[] = "plus(mul(mul(12,pow(x,3)),mul(16,pow(x,2))),mul(cos(x),sin(x)))";
+	char str[]= {"plus(plus(plus(plus(plus(plus(mul(pow(x,6),10),mul(pow(x,5),4)),mul(pow(x,4),21)),mul(pow(x,3),18)),mul(pow(x,2),7)),mul(x,2)),sin(x))"};     //stringa in imput
+//char str[] = "plus(mul(mul(12,pow(x,3)),mul(16,pow(x,2))),mul(cos(x),sin(x)))";
 
 /*	Test Set	*/
 /*
