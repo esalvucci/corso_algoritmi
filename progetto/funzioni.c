@@ -168,8 +168,9 @@ char *split(char *str)
 			while(contatore_aperta>0)		// copia fino a quando 
 			{	
 				if(str[x]=='(')	contatore_aperta++;
-				if(str[x+1]==',' || str[x] == ')')	contatore_aperta--;
-				//if(str[x+1]==')') contatore_aperta--;
+				if(str[x+1]==',')	contatore_aperta--;
+				if(str[x+1]==')')
+					contatore_aperta = contatore_aperta - 2;;
 				parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 				x++,y++;
 			}
