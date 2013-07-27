@@ -14,6 +14,7 @@ char *D_Principali(char *primo_operando)
 }
 char *Pow(char *funzione_1,char *funzione_2, char *potenza)
 {	
+	potenza = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
 	sprintf(potenza, "Mul(%s,(Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 	return potenza;				
 }
@@ -41,6 +42,7 @@ char *Sum(char *funzione_1,char *funzione_2, char *somma)
 }
 char *Sot(char *funzione_1,char *funzione_2, char *sottrazione)
 {
+	sottrazione = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
 	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p' || funzione_1[0] == 'c')
 		{	funzione_1=split(funzione_1);	}
 	else
@@ -66,6 +68,7 @@ char *Mul(char *funzione_1, char *funzione_2, char *prodotto)
 		char *d_funzione_2;	
 		char *d_funzione_1;   // d_funzione_* corrisponde alla derivata di quella funzione
 		
+	prodotto = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
 	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 		{	d_funzione_1=split(funzione_1);	}
 	else
@@ -81,6 +84,7 @@ char *Mul(char *funzione_1, char *funzione_2, char *prodotto)
 char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 	{
 
+		coseno = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)));
 		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 			{	derivata_1 = split(funzione_1);	}
 		else
@@ -93,6 +97,7 @@ char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 char *Sin(char *funzione_1, char *derivata_1, char *seno)
 	{
 
+		seno = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)));
 		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 			{	derivata_1 = split(funzione_1);	}
 		else
@@ -163,7 +168,7 @@ char *split(char *str)
 			while(contatore_aperta>0)		// copia fino a quando 
 			{	
 				if(str[x]=='(')	contatore_aperta++;
-				else if(str[x+1]==',' || str[x] == ')')	contatore_aperta--;
+				if(str[x+1]==',' || str[x] == ')')	contatore_aperta--;
 				//if(str[x+1]==')') contatore_aperta--;
 				parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 				x++,y++;
