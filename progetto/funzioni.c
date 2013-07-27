@@ -19,6 +19,8 @@ char *Pow(char *funzione_1,char *funzione_2, char *potenza)
 }
 char *Sum(char *funzione_1,char *funzione_2, char *somma)
 {
+
+	somma = (char *)malloc(sizeof(char)*(7+sizeof(funzione_1)+sizeof(funzione_2)));
 	if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p' || funzione_1[0] == 'c')
 			funzione_1=split(funzione_1);
 	else
@@ -111,6 +113,7 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 
 char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *primo_operando, char *output)
 {
+	output = (char *)malloc(sizeof(char)*200);
 	if ( strcmp(primo_operando,"x") == 0 || ( strcmp(primo_operando,"plus") != 0 && strcmp(primo_operando,"mul") != 0 && strcmp(primo_operando,"sot") != 0 && strcmp(primo_operando,"pow") != 0 ))
 	D_Principali(primo_operando); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Principali 	
 
