@@ -137,7 +137,7 @@ char *Mul(char *funzione_1, char *funzione_2, char *prodotto)
 		
 		
 		// Il procedimento è analogo ma lo eseguo sul secondo parametro della funzione
-		if(funzione_2[0] == 'm' || funzione_2[0] == 's' || funzione_2[0] == 'p' || funzione_1[0] == 'c')
+		if(funzione_2[0] == 'm' || funzione_2[0] == 's' || funzione_2[0] == 'p' || funzione_2[0] == 'c')
 			d_funzione_2 = split(funzione_2);
 		else 
 			d_funzione_2 = D_Fondamentali(funzione_2);
@@ -171,13 +171,13 @@ char *Div(char *funzione_1, char *funzione_2, char *rapporto)
 				exit (-1);
 			}	
 
-		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
+		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p'  || funzione_1[0] == 'c')
 			d_funzione_1=split(funzione_1);
 		else
 			d_funzione_1=D_Fondamentali(funzione_1);
 
 
-		if(funzione_2[0]=='m' || funzione_2[0]=='s' || funzione_2[0]=='p')
+		if(funzione_2[0]=='m' || funzione_2[0]=='s' || funzione_2[0]=='p'  || funzione_2[0] == 'c')
 			d_funzione_2=split(funzione_2);
 		else 
 			d_funzione_2=D_Fondamentali(funzione_2);
@@ -207,7 +207,7 @@ char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 				exit (-1);	
 			}	
 	
-		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p')
+		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p'  || funzione_1[0] == 'c')
 			derivata_1 = split(funzione_1);
 		else
 			derivata_1 = D_Fondamentali(funzione_1);
@@ -239,7 +239,7 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 			}
 
 
-		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p')
+		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p'  || funzione_1[0] == 'c')
 			derivata_1 = split(funzione_1);
 		else
 			derivata_1 = D_Fondamentali(funzione_1);
