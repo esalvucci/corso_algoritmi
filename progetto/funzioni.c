@@ -307,7 +307,7 @@ char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *operatore, char
 
 char *split(char *str)
 	{
-		int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1;
+		int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1,cont_parentesi=0,bul_cos_sin=0;
 		char parte_tok[MAX]="", funzione_1[MAX]="", funzione_2[MAX]="",operatore[MAX]="";	
 
 
@@ -326,6 +326,17 @@ char *split(char *str)
 					{	
 						while(contatore_aperta>0)		// copia fino a quando 
 							{	
+								if((str[x]=='c' && str[x+1]=='o'&& str[x+2]=='s')||(str[x]=='s' && str[x+1]=='i'&& str[x+2]=='n'))
+									bul_cos_sin=1;
+								if( bul_cos_sin==1)
+								{
+									if(str[x]=='(')
+										cont_parentesi++;
+									else if(str[x]==')')
+										cont_parentesi--;
+									if(cont_parentesi==0)
+										contatore_aperta--;
+								}
 								if(str[x]=='(')
 									contatore_aperta++;
 								
@@ -334,6 +345,15 @@ char *split(char *str)
 			
 								if(str[x-1]=='(' && str[x+1]==')')
 									contatore_aperta--;
+								if( (strcmp(operatore,"cos")==0)||strcmp(operatore,"sin"))
+								{
+									if(str[x-1]=='(')
+										cont_parentesi++;
+									else if(str[x+1]==')')
+										cont_parentesi--;
+									if(cont_parentesi==0)
+										contatore_aperta--;
+								}
 
 								parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 								x++,y++;
@@ -363,4 +383,5 @@ char *split(char *str)
 	
 		return Ricerca_e_deriva(funzione_1,funzione_2,operatore, NULL);	// Ritorno la funzione divisa in operatore, funzione_1, funzione_2
 }
+
 

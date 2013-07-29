@@ -9,10 +9,9 @@ int main()
 {
 
 
-	FILE *file_input, *file_output;
-	char *risultato=NULL;
-
-	char stringa[100];
+	FILE *file_input = NULL, *file_output;
+	char *risultato;
+	char stringa[1000];
 	int scelta = 0;
 
 	do
@@ -26,11 +25,13 @@ int main()
 			printf("\n\n--> ");	
 			fscanf(stdin, "%d", &scelta);	
 			while ( getchar() != '\n' );
-
+							
+			
 			switch ( scelta )
 				{
 					case 1 :
 						{
+
 							printf("Leggo il file funzione.txt\n");
 					
 							file_input = fopen("funzione.txt", "r");
@@ -59,7 +60,6 @@ int main()
 							fclose(file_output);
 					
 							printf("\n\tf(x) = %s\n\n\tDerivata = %s\n\n", stringa, risultato);
-
 							break;
 						}
 					case 2 :
