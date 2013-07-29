@@ -23,7 +23,8 @@ int main()
 			printf("\n3 - Leggere il contenuto del file in output (risultato della derivata)\n");
 			printf("\n4 - Uscire dal programma\n");
 		
-			scanf("%d", &scelta);	
+			printf("\n\n--> ");	
+			fscanf(stdin, "%d", &scelta);	
 			while ( getchar() != '\n' );
 
 			switch ( scelta )
@@ -93,7 +94,11 @@ int main()
 							printf("%s", risultato);
 	
 							fclose(file_output);
+							break;
 						}
+					case 4: return 1;
+				
+					default: break;
 				}
 			}	
 		while (scelta > 0 || scelta < 4 );
