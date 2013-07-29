@@ -24,8 +24,16 @@ char *D_Fondamentali(char *operatore)
 
 char *Pow(char *funzione_1,char *funzione_2, char *potenza)
 	{	
-		potenza = (char *)malloc(sizeof(char)* MAX);
+		potenza = (char *)malloc(sizeof(char)*(sizeof(funzione_1)+sizeof(funzione_2)*2+20));
+		
+		// Controllo che la malloc sia andata a buon fine
+		if ( potenza == NULL )
+			{
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}	
 	
+		
 		// tramite la funzione sprintf scrivo il risultato della derivata sulla funzione di output (in questo caso potenza)
 		sprintf(potenza, "Mul(%s,Pow(%s,Sot(%s,1)))", funzione_2,funzione_1,funzione_2);		
 		return potenza;				
@@ -34,7 +42,16 @@ char *Pow(char *funzione_1,char *funzione_2, char *potenza)
 char *Sum(char *funzione_1,char *funzione_2, char *somma)
 	{
 
-		somma = (char *)malloc(sizeof(char)*MAX);
+		somma = (char *)malloc(sizeof(char)*(sizeof(funzione_1)+sizeof(funzione_2)+8));
+		
+		// Controllo che la malloc sia andata a buon fine
+		if ( somma == NULL )
+			{
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}	
+		
+
 		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p' || funzione_1[0] == 'c')
 		// Se la funzione non è tra le funzioni fondamentali eseguo lo split e calcolo la derivata di ciò che ottengo
 			funzione_1 = split(funzione_1);
@@ -58,7 +75,15 @@ char *Sum(char *funzione_1,char *funzione_2, char *somma)
 
 char *Sot(char *funzione_1,char *funzione_2, char *differenza)
 	{
-		differenza = (char *)malloc(sizeof(char)*MAX);
+		differenza = (char *)malloc(sizeof(char)*(sizeof(funzione_1)+sizeof(funzione_2)+8));
+		
+		// Controllo che la malloc sia andata a buon fine
+		if ( differenza == NULL )
+			{
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}	
+		
 		
 		// Se la funzione non è tra le funzioni fondamentali eseguo lo split e calcolo la derivata di ciò che ottengo
 		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0]=='p' || funzione_1[0] == 'c')
@@ -95,6 +120,13 @@ char *Mul(char *funzione_1, char *funzione_2, char *prodotto)
 		d_funzione_1 = (char *)malloc(sizeof(char)*MAX);
 		d_funzione_2 = (char *)malloc(sizeof(char)*MAX);
 		prodotto = (char *)malloc(sizeof(char)*MAX);
+	
+		if ( prodotto == NULL )
+			{	
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}	
+	
 		
 		// Se la funzione non è tra le funzioni fondamentali eseguo lo split e calcolo la derivata di ciò che ottengo
 		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0]=='p' || funzione_1[0] == 'c')
@@ -129,6 +161,15 @@ char *Div(char *funzione_1, char *funzione_2, char *rapporto)
 		char *d_funzione_1;   // d_funzione_* corrisponde alla derivata della funzione corrispondente
 		
 		rapporto = (char *)malloc(sizeof(char)*MAX);
+		d_funzione_1 = (char *)malloc(sizeof(char)*MAX);
+		d_funzione_2 = (char *)malloc(sizeof(char)*MAX);
+			
+		// Controllo che le 3 malloc siano andate a buon fine	
+		if ( rapporto == NULL || d_funzione_1 == NULL || d_funzione_2 == NULL)
+			{	
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}	
 
 		if(funzione_1[0]=='m' || funzione_1[0]=='s' || funzione_1[0]=='p')
 			d_funzione_1=split(funzione_1);
@@ -158,6 +199,14 @@ char *Cos(char *funzione_1, char *derivata_1, char *coseno)
 	{
 
 		coseno = (char *)malloc(sizeof(char)*MAX);
+		
+		// Controllo che la malloc sia andata a buon fine
+		if ( coseno == NULL )
+			{
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);	
+			}	
+	
 		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p')
 			derivata_1 = split(funzione_1);
 		else
@@ -181,6 +230,13 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 	{
 
 		seno = (char *)malloc(sizeof(char)*MAX);
+		
+		// Controllo che la malloc sia andata a buon fine
+		if ( seno == NULL )
+			{
+				printf("Errore nell'allocazione della memoria, esco dal programma!");
+				exit (-1);
+			}
 
 
 		if(funzione_1[0] == 'm' || funzione_1[0] == 's' || funzione_1[0] == 'p')
@@ -199,12 +255,12 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 
 
 /*------------------------------------------------------*
-*		Funzione Ricerca_e_deriva		*
-*							*
-*	questa funzione ci permette di entrare nella	*
-*      funzione corrispondente all'operatore in esame,	*
-*     la quale successivamente calcolerà la derivata.	*
-*							*
+*                Funzione Ricerca_e_deriva              *
+*                                                       *
+*       questa funzione ci permette di entrare nella    *
+*      funzione corrispondente all'operatore in esame,  *
+*     la quale successivamente calcolerà la derivata.   *
+*                                                       *
 *-------------------------------------------------------*/
 
 char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *operatore, char *output)
@@ -213,20 +269,20 @@ char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *operatore, char
 		if ( strcmp(operatore,"x") == 0 || ( strcmp(operatore,"plus") != 0 && strcmp(operatore,"mul") != 0 && strcmp(operatore,"sot") != 0 && strcmp(operatore,"pow") != 0 ))
 			D_Fondamentali(operatore); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Fondamentali 	
 	
-		if(strcmp(operatore,"pow") == 0)		//	Potenza
-			output=Pow(funzione_1,funzione_2, output);
+		if(strcmp(operatore,"pow") == 0)	//	Potenza
+			output = Pow(funzione_1,funzione_2, output);
 	
-		if(strcmp(operatore,"mul") ==  0)		//	Prodotto
-			output=Mul(funzione_1 ,funzione_2, output);	
+		if(strcmp(operatore,"mul") ==  0)	//	Prodotto
+			output = Mul(funzione_1 ,funzione_2, output);	
 		
-		if(strcmp(operatore,"div") == 0)		//	Rapporto
-			output=Div(funzione_1 ,funzione_2, output);	
+		if(strcmp(operatore,"div") == 0)	//	Rapporto
+			output = Div(funzione_1 ,funzione_2, output);	
 		
 		if(strcmp(operatore,"plus") == 0)	//	Somma
-			output=Sum(funzione_1,funzione_2, output);
+			output = Sum(funzione_1,funzione_2, output);
 		
 		if(strcmp(operatore,"sot") == 0)	//	Differenza
-			output=Sot(funzione_1,funzione_2, output);
+			output = Sot(funzione_1,funzione_2, output);
 
 		if(strcmp(operatore,"sin") == 0)	//	Seno
 			output = Sin(funzione_1, "", output);
@@ -241,17 +297,17 @@ char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *operatore, char
 
 
 /*------------------------------------------------------*
-*		     Funzione Split	                *
+*                     Funzione Split                    *
 *                                                       *
 *    questa funzione divide la funzione in input in     *
 *          operatore, funzione_1 e funzione_2           *
 *       e richiama la funzione Ricerca_e_deriva         *
-*							*
+*                                                       *
 *-------------------------------------------------------*/
 
 char *split(char *str)
 	{
-		int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1,bul_cos=1,cont_parentesi=0;
+		int x = 0,y = 0,yy=0, pt = 0,max,flag_primo=1, contatore_aperta = 1;
 		char parte_tok[MAX]="", funzione_1[MAX]="", funzione_2[MAX]="",operatore[MAX]="";	
 
 
@@ -270,35 +326,23 @@ char *split(char *str)
 					{	
 						while(contatore_aperta>0)		// copia fino a quando 
 							{	
-									if((str[x]=='c' && str[x+1]=='o'&& str[x+2]=='s') || (str[x]=='s' && str[x+1]=='i'&& str[x+2]=='n'))
-									bul_cos=1;
-								
-								if( bul_cos==1)
-								{
-									if(str[x-1]=='(')
-										cont_parentesi++;
-									else if(str[x+1]==')')
-										cont_parentesi--;
-									if(cont_parentesi==0)
-									contatore_aperta--;
-								}
-					
-									if(str[x]=='(')
+								if(str[x]=='(')
 									contatore_aperta++;
-
+								
 								if(str[x+1]==',')
 									contatore_aperta--;
-
+			
 								if(str[x-1]=='(' && str[x+1]==')')
-									contatore_aperta--;			
+									contatore_aperta--;
+
 								parte_tok[y]=str[x];	//copia cella per cella nel vett di out
 								x++,y++;
 							}
-
+		
 						strcpy(funzione_1,parte_tok);
 						x++;
-
-						for( pt=0 ; pt < strlen(parte_tok) ; pt++)
+				
+						for(pt=0;pt<MAX;pt++)
 							parte_tok[pt]=0;
 					}
 				else if(contatore_aperta==0)
@@ -310,16 +354,13 @@ char *split(char *str)
 							}
 
 						strcpy(funzione_2,parte_tok);
-						for( pt=0; pt < strlen(parte_tok) ; pt++)
+						for( pt=0; pt<MAX;pt++)
 							parte_tok[pt]=0;
-
+			
 					}
 				x++;
-			}				
-
-		printf("operazione %s\n",operatore);
-		printf("funzione_1 %s\n",funzione_1);
-		printf("funzione_2 %s\n",funzione_2);
+			}
+	
 		return Ricerca_e_deriva(funzione_1,funzione_2,operatore, NULL);	// Ritorno la funzione divisa in operatore, funzione_1, funzione_2
 }
 
