@@ -266,8 +266,8 @@ char *Sin(char *funzione_1, char *derivata_1, char *seno)
 char *Ricerca_e_deriva(char *funzione_1, char *funzione_2, char *operatore, char *output)
 	{
 		output = (char *)malloc(sizeof(char)*10000);
-		if ( strcmp(operatore,"x") == 0 || ( strcmp(operatore,"plus") != 0 && strcmp(operatore,"mul") != 0 && strcmp(operatore,"sot") != 0 && strcmp(operatore,"pow") != 0 ))
-			D_Fondamentali(operatore); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Fondamentali 	
+		if ( strcmp(operatore,"plus") != 0 && strcmp(operatore,"mul") != 0 && strcmp(operatore,"sot") != 0 && strcmp(operatore,"pow") != 0 )
+			output = D_Fondamentali(operatore); // Se il primo operando è una x oppure non è nessuna delle funzioni previste allora chiama D_Fondamentali 	
 	
 		if(strcmp(operatore,"pow") == 0)	//	Potenza
 			output = Pow(funzione_1,funzione_2, output);
@@ -380,6 +380,10 @@ char *split(char *str)
 					}
 				x++;
 			}
+
+		printf("operatore = %s\n", operatore);
+		printf("funzione_1 = %s\n", funzione_1);
+		printf("funzione_2 = %s\n", funzione_2);
 	
 		return Ricerca_e_deriva(funzione_1,funzione_2,operatore, NULL);	// Ritorno la funzione divisa in operatore, funzione_1, funzione_2
 }
