@@ -272,14 +272,16 @@ char *split(char *str)
 							{	
 								if((str[x]=='c' && str[x+1]=='o'&& str[x+2]=='s')||(str[x]=='s' && str[x+1]=='i'&& str[x+2]=='n'))//se incontra i due casi del sin e del cos divide tenendo conto delle '(' o')' xke non hanno ','
 									bul_cos=1;				//setta bul_cos_sin a 1 per iniziare a contare a dividere in base alle parentesi
-								if( (strcmp(operatore,"cos")==0 && bul_cos==1 )|| (strcmp(operatore,"sin")==0 && bul_cos==1))
+								if(  bul_cos==1)
 								{
 									if(str[x]=='(')			// incrementa un cont per tenere conto delle'('
 										cont_parentesi++;
-									else if(str[x+1]==')')	//dec il contatore sopra
-										cont_parentesi--;
-									if(cont_parentesi==0)	// se le '(' sono uguali alle ')' risetta
-										contatore_aperta--;	// decrementa il con principale perchè in cos e sin non sono presenti le ','
+									else if(str[x+2]==')')	//dec il contatore sopra
+										{
+											cont_parentesi--;
+											if(cont_parentesi==0)	// se le '(' sono uguali alle ')' risetta
+											contatore_aperta--;	// decrementa il con principale perchè in cos e sin non sono presenti le ','
+										}
 								}
 													
 								if(str[x]=='(')			//incrementa un cont per capire quando finisce funzione_1
@@ -288,14 +290,16 @@ char *split(char *str)
 									contatore_aperta--;
 								if(str[x-1]=='(' && str[x+1]==')')		// questo if serve per gestire il caso semplice del seno o del coseno
 									contatore_aperta--;
-								if( (strcmp(operatore,"cos")==0) || (strcmp(operatore,"sin")==0))//funziona come sopra solo che serve per dividere 
+								if( strcmp(operatore,"cos")==0 || strcmp(operatore,"sin")==0 )//funziona come sopra solo che serve per dividere 
 								{
-									if(str[x-1]=='(')		//incrementa un cont per gestire i casi del coseno e del seno
+									if(str[x]=='(')		//incrementa un cont per gestire i casi del coseno e del seno
 										cont_parentesi++;
-									else if(str[x+1]==')')	// decrementa il contatore sopra
-										cont_parentesi--;
-									if(cont_parentesi==0)	//quando le '(' sono uguali alle')' decrementa di 1 il contatore principale xke in cos o sin non ci sono le ',' 
-										contatore_aperta--;
+									else if(str[x]==')')	// decrementa il contatore sopra
+										{
+											cont_parentesi--;
+											if(cont_parentesi==0)	//quando le '(' sono uguali alle')' decrementa di 1 il contatore principale xke in cos o sin non ci sono le ',' 
+											contatore_aperta--;
+										}
 								}
 								
 								parte_tok[y]=str[x];	//copia cella per cella nel vett di out
