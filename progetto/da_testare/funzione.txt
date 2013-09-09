@@ -1,0 +1,1 @@
+plus(cos(x),sin(plus(cos(x),cos(x))))

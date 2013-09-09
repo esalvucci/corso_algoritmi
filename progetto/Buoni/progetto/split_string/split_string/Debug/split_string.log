@@ -1,0 +1,47 @@
+﻿Compilazione avviata 28/07/2013 00:31:11.
+Progetto "C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\split_string\split_string.vcxproj" sul nodo 2 (destinazioni: build).
+InitializeBuildStatus:
+  Creazione di "Debug\split_string.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+ClCompile:
+  c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt "..\..\..\..\..\Dropbox\università\programmi\C\Secondo_Semestre\progetto_asd\Buoni\funzioni.c" "..\..\..\..\..\Dropbox\università\programmi\C\Secondo_Semestre\progetto_asd\Buoni\split_string.c"
+  split_string.c
+  funzioni.c
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(30): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(53): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(78): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(114): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(145): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(167): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(193): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(286): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105): vedere la dichiarazione di 'strcpy'
+c:\users\enrico\dropbox\università\programmi\c\secondo_semestre\progetto_asd\buoni\funzioni.c(300): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          c:\program files\microsoft visual studio 10.0\vc\include\string.h(105): vedere la dichiarazione di 'strcpy'
+  Generazione del codice in corso...
+ManifestResourceCompile:
+  Tutti gli output sono aggiornati.
+Link:
+  c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\Debug\split_string.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\split_string.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\Debug\split_string.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\Debug\split_string.lib" /MACHINE:X86 Debug\split_string.exe.embed.manifest.res
+  Debug\funzioni.obj
+  Debug\split_string.obj
+Manifest:
+  c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\split_string.exe.embed.manifest" /manifest Debug\split_string.exe.intermediate.manifest
+  Tutti gli output sono aggiornati.
+LinkEmbedManifest:
+  Tutti gli output sono aggiornati.
+  split_string.vcxproj -> C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\Debug\split_string.exe
+FinalizeBuildStatus:
+  Eliminazione del file "Debug\split_string.unsuccessfulbuild" in corso.
+  Aggiornamento timestamp di "Debug\split_string.lastbuildstate".
+Compilazione progetto "C:\Users\Enrico\Documents\Visual Studio 2010\Projects\split_string\split_string\split_string.vcxproj" (destinazioni: build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:08.40

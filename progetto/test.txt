@@ -1,0 +1,22 @@
+Complete
+
+plus(plus(plus(plus(plus(plus(mul(pow(x,6),10),mul(pow(x,5),4)),mul(pow(x,4),21)),mul(pow(x,3),18)),mul(pow(x,2),7)),mul(x,2)),100)
+plus(mul(mul(mul(pow(x,6),10),plus(mul(pow(x,5),4),mul(pow(x,4),21))),mul(pow(x,3),18)),mul(mul(pow(x,2),7),plus(mul(x,2),100))
+div(plus(plus(plus(mul(pow(x,4),3),mul(pow(x,2),8)),mul(x,3)),1),plus(plus(mul(pow(x,4),2),mul(pow(x,2),6)),2)
+
+
+Semplici
+
+// Test complessi
+plus(plus(plus(plus(plus(plus(mul(pow(x,6),10),mul(pow(x,5),4)),mul(pow(x,4),21)),mul(pow(x,3),18)),mul(pow(x,2),7)),mul(x,2)),100) -> OK (ma non ho verificato il risultato passaggio per passaggio)
+
+plus(mul(mul(mul(pow(x,6),10),plus(mul(pow(x,5),4),mul(pow(x,4),21))),mul(pow(x,3),18)),mul(mul(pow(x,2),7),plus(mul(x,2),100))) -> OK (ma non ho verificato il risultato passaggio per passaggioi)
+
+div(plus(plus(plus(mul(pow(x,4),3),mul(pow(x,2),8)),mul(x,3)),1),plus(plus(mul(pow(x,4),2),mul(pow(x,2),6)),2))
+
+sin(div(plus(plus(plus(mul(pow(x,4),3),mul(pow(x,2),8)),mul(x,3)),1),plus(plus(mul(pow(x,4),2),mul(pow(x,2),6)),2))) -> non è corretta la parte finale, il secondo parametro della mul
+
+div(mul(sin(plus(mul(pow(x,2),5),x)),cos(mul(pow(x,2),6))),mul(cos(pow(x,2)),4))
+
+div(mul(sin(plus(mul(pow(x,2),5),x)),cos(mul(pow(x,2),6))),div(plus(pow(x,2),1),mul(cos(pow(x,2)),4)))
+
