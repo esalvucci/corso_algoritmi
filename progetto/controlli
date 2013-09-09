@@ -1,0 +1,6 @@
+
+
+- Controllo sulle potenze, la x sta sempre a sinistra, il resto a destra
+(- Controllo sulle moltiplicazioni per 0)
+- Controllo sulle divisioni per 0
+

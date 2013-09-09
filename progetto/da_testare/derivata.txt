@@ -1,0 +1,1 @@
+Plus(Mul(-Sin(x),1),Mul(Cos(plus(cos(x),cos(x))),Plus(Mul(-Sin(x),1),Mul(-Sin(x),1))))

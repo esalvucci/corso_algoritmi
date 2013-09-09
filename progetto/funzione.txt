@@ -1,0 +1,1 @@
+sin(div(plus(plus(plus(mul(pow(x,4),3),mul(pow(x,2),8)),mul(x,3)),1),plus(plus(mul(pow(x,4),2),mul(pow(x,2),6)),2)))

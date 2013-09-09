@@ -1,0 +1,14 @@
+/*	Tecnica implementativa	*/
+
+esempio: f(x) = mul(pow(x,3),2)
+
+abbandoniamo l'idea dell'albero per lavorare ricorsivamente sulla stringa.
+	- splittiamo la stringa con il programma split_string.c
+	- quando troviamo un operatore (sicuramente la prima sottostringa) richiamiamo la funzione corrispondente (qundi avremo una funzione mul( ), pow( ) ecc...)
+		- i parametri di queste funzioni saranno le due stringhe comprese tra la parentesi aperta "(" e la virgola "," e tra la virgola e la parentesi chiusa
+		
+	- ricorsivamente splittiamo anche le funzioni che inizialmente erano parametri e ne ricaviamo la derivata in base alle esigenze, ad esempio:
+		mul(pow(x,3),2) --> chiamo la funzione mul che avrà come parametri funzione_1 ( "pow(x,3)" ) e funzione_2 ( "2" )
+				la derivata del prodotto e il la somma dei prodotti tra f1 e f2' e f2 e f1'	( (f1'*f2) + (f2*f1'))
+				secondo l'esempio, quindi, f'(x) = ((2*x^3) + (3*x^2 * 0))
+
